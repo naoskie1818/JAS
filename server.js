@@ -158,7 +158,15 @@ async function sendOrderConfirmationEmail(orderDetails) {
 }
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://your-frontend-url.vercel.app', // We'll update this later
+    /\.vercel\.app$/ // Allow all Vercel preview URLs
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(express.static('public')); // Serve your HTML/CSS/JS files
 app.use(express.static('.')); // Also serve files from root directory
@@ -699,3 +707,4 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 
 });
+
