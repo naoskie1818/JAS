@@ -14,7 +14,7 @@ try {
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Email configuration (only if nodemailer is available)
 const EMAIL_CONFIG = {
@@ -697,4 +697,5 @@ app.post('/api/customers/login', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+
 });
